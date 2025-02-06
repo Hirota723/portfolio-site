@@ -43,7 +43,7 @@ const Header = () => {
             {menuItems.map((item) => (
               <a
                 key={item.id}
-                className="cursor-pointer hover:text-primary transition-colors"
+                className="cursor-pointer text-muted-foreground hover:text-primary transition-colors"
                 onClick={() => {
                   document
                     .querySelector(item.id)
@@ -76,7 +76,7 @@ const Header = () => {
               {menuItems.map((item) => (
                 <a
                   key={item.id}
-                  className="hover:text-primary transition-colors px-4 py-2"
+                  className="cursor-pointer hover:text-primary transition-colors px-4 py-2"
                   onClick={() => {
                     document
                       .querySelector(item.id)
