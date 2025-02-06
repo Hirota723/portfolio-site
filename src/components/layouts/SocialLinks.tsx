@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, BookOpen } from "lucide-react";
+import { FaGithub,FaXTwitter } from "react-icons/fa6";
+import { SiQiita } from "react-icons/si";
 
 const socialLinks = [
   {
-    icon: <Github className="w-5 h-5" />,
+    icon: <FaGithub className="w-5 h-5" />,
     url: "https://github.com/Hirota723",
     label: "GitHub",
   },
   {
-    icon: <Twitter className="w-5 h-5" />,
+    icon: <FaXTwitter className="w-5 h-5" />,
     url: "https://x.com/koki_hiro0723",
     label: "X",
   },
   {
-    icon: <BookOpen className="w-5 h-5" />,
+    icon: <SiQiita className="w-5 h-5" />,
     url: "https://qiita.com/Hirota723",
     label: "Qiita",
   },
