@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "KOKI HIROTA | エンジニアポートフォリオサイト",
-  description: "KOKI HIROTA | エンジニアポートフォリオサイト",
+  description: "廣田航輝(ひろたこうき)のエンジニアポートフォリオサイト",
 };
 
 export default function RootLayout({
