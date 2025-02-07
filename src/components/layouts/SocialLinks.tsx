@@ -26,7 +26,7 @@ const SocialLinks = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.8 }}
-      className="flex justify-center space-x-8 mb-6"
+      className="flex justify-center space-x-8"
     >
       {socialLinks.map((link, index) => (
         <motion.a
