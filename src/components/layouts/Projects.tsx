@@ -11,7 +11,8 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { ExternalLink, Github, Globe } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -68,133 +69,135 @@ const Projects = () => {
 
   return (
     <section className="py-20" id="projects">
-      <motion.div
-        className="container mx-auto px-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.h2
-          className="text-3xl font-bold mb-8 text-center tracking-wider"
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+      <div className="container mx-auto px-4 max-w-5xl">
+        <motion.div
+          className="container mx-auto px-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
-          Projects
-        </motion.h2>
+          <motion.h2
+            className="text-3xl font-bold mb-8 text-center tracking-wider"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Projects
+          </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              className="bg-white/5 rounded-lg p-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <Card
-                className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
-                onClick={() => setSelectedProject(project)}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                className="bg-white/5 rounded-lg p-1"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
               >
-                <div className="relative aspect-video overflow-hidden">
-                  <Image // 変更
-                    src={project.image}
-                    alt={project.title}
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                    layout="fill" // 追加
-                    objectFit="cover" // 追加
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ExternalLink className="w-6 h-6 text-white" />
+                <Card
+                  className="overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <ExternalLink className="w-6 h-6 text-white" />
+                    </div>
                   </div>
-                </div>
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-muted-foreground mb-4 flex-1">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                  <CardHeader>
+                    <CardTitle>{project.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-muted-foreground mb-4 flex-1">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
 
-        <Dialog
-          open={selectedProject !== null}
-          onOpenChange={(open) => !open && setSelectedProject(null)}
-        >
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold mb-2">
-                {selectedProject?.title}
-              </DialogTitle>
-              <DialogDescription
-                className="text-lg text-foreground"
-                dangerouslySetInnerHTML={{
-                  __html: selectedProject?.longDescription || "",
-                }}
-              />
-            </DialogHeader>
-            <div className="mt-4">
-              <div className="relative aspect-video overflow-hidden rounded-lg mb-4">
-                <Image
-                  src={selectedProject?.image || "/images/profile.png"}
-                  alt={selectedProject?.title || "Default Project Image"}
-                  className="object-cover"
-                  layout="fill" // 親要素に合わせてフィット
-                  objectFit="cover" // 必要に応じてトリミング
-                  priority
+          <Dialog
+            open={selectedProject !== null}
+            onOpenChange={(open) => !open && setSelectedProject(null)}
+          >
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold mb-2">
+                  {selectedProject?.title}
+                </DialogTitle>
+                <DialogDescription
+                  className="text-lg text-foreground"
+                  dangerouslySetInnerHTML={{
+                    __html: selectedProject?.longDescription || "",
+                  }}
                 />
-              </div>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {selectedProject?.tags.map((tag, index) => (
-                  <Badge key={index} variant="secondary">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <div className="flex gap-4">
-                {selectedProject?.links.github && (
-                  <Link
-                    href={selectedProject.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
-                  >
-                    <Github className="w-4 h-4" />
-                    GitHub
-                  </Link>
-                )}
+              </DialogHeader>
+              <div className="mt-4">
+                <div className="relative aspect-video overflow-hidden rounded-lg mb-4">
+                  <Image
+                    src={selectedProject?.image || "/images/profile.png"}
+                    alt={selectedProject?.title || "Default Project Image"}
+                    className="object-cover"
+                    layout="fill"
+                    objectFit="cover"
+                    priority
+                  />
+                </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedProject?.tags.map((tag, index) => (
+                    <Badge key={index} variant="secondary">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex gap-4">
+                  {selectedProject?.links.github && (
+                    <Link
+                      href={selectedProject.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      GitHub
+                    </Link>
+                  )}
 
-                {selectedProject?.links.demo && (
-                  <Link
-                    href={selectedProject.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
-                  >
-                    <Globe className="w-4 h-4" />
-                    Demo
-                  </Link>
-                )}
+                  {selectedProject?.links.demo && (
+                    <Link
+                      href={selectedProject.links.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
+                    >
+                      <Globe className="w-4 h-4" />
+                      Demo
+                    </Link>
+                  )}
+                </div>
               </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </motion.div>
+            </DialogContent>
+          </Dialog>
+        </motion.div>
+      </div>
     </section>
   );
 };
