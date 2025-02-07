@@ -39,7 +39,7 @@ const Hero = () => {
           <Button
             size="lg"
             variant="outline"
-            className="gap-2 text-lg mt-10"
+            className="gap-2 text-lg mt-16"
             onClick={() => {
               document
                 .getElementById("profile")

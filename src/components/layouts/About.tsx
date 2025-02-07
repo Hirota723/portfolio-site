@@ -9,14 +9,14 @@ const About = () => {
   const personalInfo = [
     { label: "生年月日", value: "2003年7月23日" },
     { label: "出身", value: "京都府京都市" },
-    { label: "趣味", value: "カラオケ、カフェ巡り、ライブ鑑賞" },
+    { label: "趣味", value: "カラオケ, カフェ巡り, ライブ" },
   ];
 
   const experiences = [
     { place: "京都市立紫野高等学校", status: "卒業", date: "2022年3月" },
     { place: "京都産業大学", status: "在学中", date: "2022年4月–現在" },
     {
-      place: "日本マクドナルド株式会社",
+      place: "マクドナルド株式会社",
       status: "アルバイト",
       date: "2022年5月–現在",
     },
@@ -31,7 +31,7 @@ const About = () => {
 
   return (
     <section className="py-20 bg-accent/50" id="profile">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,14 +65,15 @@ const About = () => {
                 <p className="text-lg text-muted-foreground mb-2">
                   ひろた こうき
                 </p>
-                <SocialLinks />
-                <div className="space-y-2 text-sm">
+                
+                <div className="space-y-2 text-sm mb-4">
                   {personalInfo.map((info, index) => (
                     <p key={index} className="text-base">
                       {info.label}：{info.value}
                     </p>
                   ))}
                 </div>
+                <SocialLinks />
               </CardContent>
             </Card>
           </motion.div>
