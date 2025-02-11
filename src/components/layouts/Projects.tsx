@@ -138,60 +138,78 @@ const Projects = () => {
             open={selectedProject !== null}
             onOpenChange={(open) => !open && setSelectedProject(null)}
           >
-            <DialogContent className="max-w-2xl">
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold mb-2">
-                  {selectedProject?.title}
-                </DialogTitle>
-                <DialogDescription
-                  className="text-lg text-foreground"
-                  dangerouslySetInnerHTML={{
-                    __html: selectedProject?.longDescription || "",
-                  }}
-                />
-              </DialogHeader>
-              <div className="mt-4">
-                <div className="relative aspect-video overflow-hidden rounded-lg mb-4">
-                  <Image
-                    src={selectedProject?.image || "/images/profile.png"}
-                    alt={selectedProject?.title || "Default Project Image"}
-                    className="object-cover"
-                    layout="fill"
-                    objectFit="cover"
-                    priority
-                  />
+            <DialogContent className="max-w-4xl p-4 md:p-6">
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8">
+                {/* タイトルと説明 */}
+                <div className="order-1">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl md:text-3xl font-bold mb-2 md:mb-4">
+                      {selectedProject?.title}
+                    </DialogTitle>
+                    <DialogDescription
+                      className="text-base md:text-lg text-foreground leading-relaxed"
+                      dangerouslySetInnerHTML={{
+                        __html: selectedProject?.longDescription || "",
+                      }}
+                    />
+                  </DialogHeader>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {selectedProject?.tags.map((tag, index) => (
-                    <Badge key={index} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  {selectedProject?.links.github && (
-                    <Link
-                      href={selectedProject.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
-                    >
-                      <FaGithub className="w-4 h-4" />
-                      GitHub
-                    </Link>
-                  )}
 
-                  {selectedProject?.links.demo && (
-                    <Link
-                      href={selectedProject.links.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-2 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
-                    >
-                      <Globe className="w-4 h-4" />
-                      Demo
-                    </Link>
-                  )}
+                {/* 画像セクション */}
+                <div className="order-2 md:order-1 flex justify-center md:mt-8 md:items-center">
+                  <div className="relative w-full max-w-md">
+                    <Image
+                      src={selectedProject?.image || "/images/profile.png"}
+                      alt={selectedProject?.title || "Default Project Image"}
+                      className="rounded-lg"
+                      layout="responsive"
+                      width={800}
+                      height={500}
+                      priority
+                      style={{
+                        objectFit: "cover",
+                        maxHeight: "350px",
+                      }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+
+                {/* 使用技術 */}
+                <div className="order-3">
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject?.tags.map((tag, index) => (
+                      <Badge key={index} variant="secondary">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* リンク  */}
+                  <div className="mt-4 md:mt-6 flex flex-wrap gap-4">
+                    {selectedProject?.links.github && (
+                      <Link
+                        href={selectedProject.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 p-2 md:p-3 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
+                      >
+                        <FaGithub className="w-5 h-5" />
+                        GitHub
+                      </Link>
+                    )}
+                    {selectedProject?.links.demo && (
+                      <Link
+                        href={selectedProject.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 p-2 md:p-3 border rounded-md text-muted-foreground hover:bg-gray-200 transition"
+                      >
+                        <Globe className="w-5 h-5" />
+                        Demo
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             </DialogContent>
