@@ -61,8 +61,8 @@ const Projects = () => {
                       src={project.image}
                       alt={project.title}
                       className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <ExternalLink className="w-6 h-6 text-white" />
@@ -115,8 +115,7 @@ const Projects = () => {
                     <Image
                       src={selectedProject?.image || "/images/profile.png"}
                       alt={selectedProject?.title || "Default Project Image"}
-                      className="rounded-lg"
-                      layout="responsive"
+                      className="rounded-lg w-full h-auto"
                       width={800}
                       height={500}
                       priority
