@@ -1,24 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGithub,FaXTwitter } from "react-icons/fa6";
-import { SiQiita } from "react-icons/si";
-
-const socialLinks = [
-  {
-    icon: <FaGithub className="w-5 h-5" />,
-    url: "https://github.com/Hirota723",
-    label: "GitHub",
-  },
-  {
-    icon: <FaXTwitter className="w-5 h-5" />,
-    url: "https://x.com/koki_hiro0723",
-    label: "X",
-  },
-  {
-    icon: <SiQiita className="w-5 h-5" />,
-    url: "https://qiita.com/Hirota723",
-    label: "Qiita",
-  },
-];
+import { socialLinks } from "@/constants/socialLinks";
 
 const SocialLinks = () => {
   return (
@@ -38,7 +19,7 @@ const SocialLinks = () => {
           whileHover={{ scale: 1.1 }}
           aria-label={link.label}
         >
-          {link.icon}
+          <link.icon className="w-5 h-5" />
         </motion.a>
       ))}
     </motion.div>

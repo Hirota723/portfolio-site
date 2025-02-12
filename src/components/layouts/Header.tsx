@@ -3,13 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
-const menuItems = [
-  { label: "Profile", id: "#profile" },
-  { label: "Projects", id: "#projects" },
-  { label: "Skill", id: "#skill" },
-  { label: "Contact", id: "#contact" },
-];
+import { menuItems } from "@/constants/menuItems";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
