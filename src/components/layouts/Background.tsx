@@ -1,15 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  growing: boolean;
-}
+import Particle from "@/types/particle";
 
 const Background = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

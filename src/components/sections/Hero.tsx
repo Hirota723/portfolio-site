@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import SocialLinks from "./SocialLinks";
+import { Button } from "@/components/ui/button";
+import SocialLinks from "@/components/links/SocialLinks";
 
 const Hero = () => {
   return (
