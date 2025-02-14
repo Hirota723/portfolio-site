@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Skill from "@/types/skill";
 
-const ToolCard = ({ icon: Icon, title }: Skill) => {
+const ToolSkillCard = ({ icon: Icon, title }: Skill) => {
   return (
     <Card className="p-4 shadow-md flex items-center space-x-4">
       <Icon className="w-8 h-8" />
@@ -10,4 +10,4 @@ const ToolCard = ({ icon: Icon, title }: Skill) => {
   );
 };
 
-export default ToolCard;
+export default ToolSkillCard;

@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Skill from "@/types/skill";
 
-const SkillCard = ({ icon: Icon, title, description }: Skill) => (
+const TechSkillCard = ({ icon: Icon, title, description }: Skill) => (
   <Card className="p-4 shadow-lg">
     <CardContent className="flex flex-col items-center text-center space-y-4">
       <Icon className="w-10 h-10" />
@@ -11,4 +11,4 @@ const SkillCard = ({ icon: Icon, title, description }: Skill) => (
   </Card>
 );
 
-export default SkillCard;
+export default TechSkillCard;
