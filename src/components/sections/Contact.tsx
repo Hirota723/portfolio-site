@@ -5,9 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Loader2 } from "lucide-react";
+import useContactForm from "@/hooks/useContactForm";
 
 const Contact = () => {
+  const { form, onSubmit, isSubmitting } = useContactForm();
+
   return (
     <section className="py-20" id="contact">
       <div className="container mx-auto px-4 max-w-5xl">
@@ -20,78 +30,81 @@ const Contact = () => {
         >
           <h2 className="text-3xl font-bold mb-4 tracking-wider">Contact</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            現在、こちらからのお問い合わせは受け付けておりません。
+            お問い合わせは以下のフォームよりご連絡ください。
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <Card>
-              <CardContent className="p-6">
-                <form className="space-y-4">
-                  <div>
-                    <Input placeholder="お名前" />
+
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Card className="max-w-2xl mx-auto">
+            <CardContent className="p-6">
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input placeholder="Email" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Message"
+                            className="min-h-[150px]"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="flex justify-center">
+                    <Button
+                      disabled={isSubmitting}
+                      type="submit"
+                      className="w-32 h-12"
+                    >
+                      {isSubmitting ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      ) : (
+                        "Send"
+                      )}
+                    </Button>
                   </div>
-                  <div>
-                    <Input type="email" placeholder="メールアドレス" />
-                  </div>
-                  <div>
-                    <Textarea
-                      placeholder="メッセージ"
-                      className="min-h-[150px]"
-                    />
-                  </div>
-                  <Button className="w-full">送信する</Button>
                 </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6" />
-                  <div>
-                    <h3 className="font-semibold">メール</h3>
-                    <p className="text-muted-foreground">contact@example.com</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6" />
-                  <div>
-                    <h3 className="font-semibold">電話</h3>
-                    <p className="text-muted-foreground">03-1234-5678</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <MapPin className="w-6 h-6" />
-                  <div>
-                    <h3 className="font-semibold">所在地</h3>
-                    <p className="text-muted-foreground">京都府京都市</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+              </Form>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
