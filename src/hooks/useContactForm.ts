@@ -1,6 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { sendContactForm } from "@/api/contact";
 import { ContactFormSchema, ContactFormType } from "@/utils/formSchema";
 import toast from "react-hot-toast";
 
@@ -14,11 +13,19 @@ const useContactForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<ContactFormType> = async (data) => {
+  const onSubmit: SubmitHandler<ContactFormType> = async (
+    data: ContactFormType
+  ) => {
     try {
-      const res = await sendContactForm(data);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-      if (!res.success) {
+      if (!res.ok) {
         toast.error("送信に失敗しました。時間をおいて再試行してください。");
         return;
       }
