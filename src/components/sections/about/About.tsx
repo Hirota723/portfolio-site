@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import SocialLinks from "@/components/links/SocialLinks";
+import SocialLinks from "@/components/SocialLinks";
 import { personalInfo } from "@/constants/personalInfo";
 import { experiences } from "@/constants/experiences";
 

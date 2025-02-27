@@ -91,7 +91,7 @@ const Contact = () => {
                     <Button
                       disabled={isSubmitting}
                       type="submit"
-                      className="w-32 h-12"
+                      className="w-32 h-12 text-lg font-bold"
                     >
                       {isSubmitting ? (
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

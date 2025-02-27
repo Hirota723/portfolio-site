@@ -56,7 +56,7 @@ const Background = () => {
 
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.lineWidth = 2; // 線の太さを増加
+      ctx.lineWidth = 2;
 
       particles.forEach((particle, i) => {
         particle.x += particle.vx;
@@ -70,7 +70,7 @@ const Background = () => {
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(160, 160, 160, ${
           0.4 + ((particle.size - minSize) / (maxSize - minSize)) * 0.4
-        })`; // 透明度を上げる
+        })`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -110,7 +110,7 @@ const Background = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-50" // 不透明度を上げる
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-50"
     />
   );
 };

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import TechSkillCard from "@/components/skills/TechSkillCard";
-import ToolSkillCard from "@/components/skills/ToolSkillCard";
+import TechSkillCard from "@/components/sections/skill/TechSkillCard";
+import ToolSkillCard from "@/components/sections/skill/ToolSkillCard";
 import { techStacks } from "@/constants/techStacks";
 
 const Skill = () => {

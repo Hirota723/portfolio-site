@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SocialLinks from "@/components/links/SocialLinks";
+import SocialLinks from "@/components/SocialLinks";
 
 const Hero = () => {
   return (

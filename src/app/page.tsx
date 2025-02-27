@@ -1,10 +1,10 @@
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
-import Footer from "@/components/layouts/Footer";
-import Header from "@/components/layouts/Header";
-import Hero from "@/components/sections/Hero";
-import Projects from "@/components/sections/Projects";
-import Skill from "@/components/sections/Skill";
+import About from "@/components/sections/about/About";
+import Contact from "@/components/sections/contact/Contact";
+import Footer from "@/components/layouts/Footer/Footer";
+import Header from "@/components/layouts/Header/Header";
+import Hero from "@/components/sections/hero/Hero";
+import Projects from "@/components/sections/project/Projects";
+import Skill from "@/components/sections/skill/Skill";
 
 const Home = () => {
   return (
